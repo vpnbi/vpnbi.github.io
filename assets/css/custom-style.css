@@ -1,164 +1,327 @@
-/* 全局字体大小与行高调整 */
+/* ================== 全局优化 ================== */
+/* 基础字体优化 */
 body, html {
-    font-size: 16px; /* 提升可读性 */
-    line-height: 1.5; /* 增加行间距，提升舒适度 */
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
 }
 
-/* 左导航悬浮菜单宽度与滚动条优化 */
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================== 导航系统优化 ================== */
+/* 侧边导航悬浮优化 */
 .sidebar-popup.sidebar-menu-inner > div > ul > li.sidebar-item > ul {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    min-width: 120px; /* 增加最小宽度，提升内容适应性 */
-    z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 200px;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
 }
-.sidebar-popup.sidebar-menu-inner ul {
-    min-width: 120px;
+
+.sidebar-popup.sidebar-menu-inner > div > ul > li.sidebar-item:hover > ul {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
 }
+
 .sidebar-popup.sidebar-menu-inner ul li {
-    min-width: 120px;
+  width: 100%;
+  padding: 0 15px;
 }
 
-/* 自定义滚动条 */
+.sidebar-popup.sidebar-menu-inner ul li a {
+  display: block;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.sidebar-popup.sidebar-menu-inner ul li a:hover {
+  background: #f0f7ff;
+  color: #0d6efd;
+  transform: translateX(3px);
+}
+
+/* 隐藏滚动条但保留功能 */
+.sidebar-menu.flex-fill {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .sidebar-menu.flex-fill::-webkit-scrollbar {
-    width: 6px;
-}
-.sidebar-menu.flex-fill::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 3px;
-}
-.sidebar-menu.flex-fill::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+  display: none;
 }
 
-/* 搜索框搜索图标颜色与hover效果 */
-#search button i {
-    color: #333; /* 更深色，提升可读性 */
-    font-size: 18px;
-    transition: color 0.3s; /* 平滑过渡 */
-}
-#search button:hover i {
-    color: #ffffff; /* hover时更显眼 */
+/* 顶部导航栏优化 */
+.page-header {
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85) !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* 顶部导航栏字体与图标颜色 */
 .big-header-banner .page-header {
-    color: #ffffff;
-    background: rgba(255,255,255,0);
-    box-shadow: none;
-    transition: color 0.3s, background-color 0.3s;
+  background: rgba(255,255,255,0) !important;
+  box-shadow: none;
 }
-.big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a,
+
+.big-header-banner:not(.header-bg) .navbar-nav > li > a,
 .big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item) {
-    color: #ffffff;
-    transition: color 0.3s; /* 添加过渡 */
-}
-.big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a:hover,
-.big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item):hover {
-    color: #dc3545;
-}
-.big-header-banner:not(.header-bg) .header-mini-btn path {
-    stroke: #ffffff;
-}
-.big-header-banner:not(.header-bg) .header-mini-btn label:hover path {
-    stroke: #ffffff;
+  color: #ffffff;
+  position: relative;
+  padding: 8px 15px;
 }
 
-/* 搜索栏字体与背景 */
-.header-big #search-text {
-    color: #333; /* 更深色，提升可读性 */
-}
-.io-black-mode .header-big #search-text {
-    color: #fff;
+.big-header-banner:not(.header-bg) .navbar-nav > li > a::after,
+.big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item)::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #dc3545;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
 }
 
-/* 搜索热词样式调整 */
+.big-header-banner:not(.header-bg) .navbar-nav > li > a:hover::after,
+.big-header-banner:not(.header-bg) .navbar-menu a:not(.dropdown-item):hover::after {
+  width: 60%;
+}
+
+/* 导航图标动效优化 */
+.header-mini-btn {
+  transition: transform 0.3s ease;
+}
+.header-mini-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ================== 搜索系统优化 ================== */
+/* 搜索框整体优化 */
+#search {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 搜索图标优化 */
+#search button i {
+  color: #6C757D;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+#search button:hover i {
+  color: #0d6efd;
+  transform: scale(1.1);
+}
+
+/* 搜索输入框优化 */
+#search-text {
+  border-radius: 50px;
+  padding: 12px 25px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid #e0e0e0;
+}
+
+#search-text:focus {
+  box-shadow: 0 6px 15px rgba(32, 201, 151, 0.25);
+  border-color: #20c997;
+  transform: translateY(-2px);
+}
+
+/* 搜索热词卡片优化 */
 .search-hot-text {
-    position: absolute;
-    z-index: 100;
-    width: 100%;
-    border-radius: 0 0 10px 10px;
-    background: #fff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 更柔和的阴影 */
-    overflow: hidden;
-}
-.search-hot-text ul {
-    margin: 0;
-    padding: 5px 0;
-}
-.search-hot-text ul li {
-    line-height: 30px;
-    font-size: 14px;
-    padding: 0 25px;
-    color: #777;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* 平滑过渡 */
-}
-.io-black-mode .search-hot-text {
-    background: #333; /* 深色背景 */
-}
-.io-black-mode .search-hot-text ul li {
-    color: #fff;
-}
-.search-hot-text ul li.current {
-    background: #f1f1f1;
-    color: #2196f3;
-}
-.io-black-mode .search-hot-text ul li.current {
-    background: #444; /* 黑色模式下的current背景 */
-    color: #2196f3;
-}
-.search-hot-text ul li:hover {
-    background: #f1f1f1;
-    color: #2196f3;
-}
-.io-black-mode .search-hot-text ul li:hover {
-    background: #444;
-    color: #2196f3;
-}
-.search-hot-text ul li span {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    line-height: 20px;
-    text-align: center;
-    background: #e5e5e5;
-    margin-right: 10px;
-    border-radius: 10px;
-    color: #999;
-}
-.io-black-mode .search-hot-text ul li span {
-    background: #555; /* 黑色模式调整 */
-    color: #ccc;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  background: #ffffff;
+  overflow: hidden;
+  top: calc(100% + 10px);
+  animation: fadeIn 0.3s ease;
 }
 
-/* 导航Logo图标裁剪边角与hover效果 */
-.url-card .url-img > img {
-    border-radius: 20%;
-    transition: transform 0.3s; /* 平滑放大 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.url-card .url-img > img:hover {
-    transform: scale(1.1); /* 放大效果 */
+
+.search-hot-text ul li {
+  padding: 10px 25px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.search-hot-text ul li span {
+  background: #f0f7ff;
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.search-hot-text ul li:hover {
+  background: #f8f9fa;
+  transform: translateX(5px);
+}
+
+/* 主页大搜索区域优化 */
+.header-big.css-color {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
+  padding: 80px 0 100px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================== 布局与卡片优化 ================== */
+/* 卡片通用样式 */
+.panel, .url-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.panel:hover, .url-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* Logo图标优化 */
+.url-card .url-img > img {
+  border-radius: 20%;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.url-card:hover .url-img > img {
+  transform: scale(1.1);
+  border-color: rgba(13, 110, 253, 0.2);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* 链接颜色优化 */
+a {
+  color: #0d6efd;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #dc3545;
+  text-decoration: underline;
+}
+
+/* ================== 深色模式优化 ================== */
+.io-black-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.io-black-mode .page-header {
+  background: rgba(30, 30, 30, 0.85) !important;
+}
+
+.io-black-mode .panel, 
+.io-black-mode .url-card {
+  background: #1e1e1e;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.io-black-mode .search-hot-text {
+  background: #2d2d2d;
+}
+
+.io-black-mode .search-hot-text ul li {
+  color: #e0e0e0;
+}
+
+.io-black-mode #search-text {
+  background: #2d2d2d;
+  color: #fff;
+  border-color: #444;
 }
 
 /* 网格背景优化 */
 .io-grey-mode .page-container .grid-bg {
-    background-image: linear-gradient(rgba(50, 0, 0, 0.02) 1px, transparent 0), linear-gradient(90deg, rgba(50, 0, 0, 0.02) 1px, transparent 0);
-    background-size: 15px 15px;
-    background-color: #d8d8d8;
+  background-image: 
+    linear-gradient(rgba(200, 200, 200, 0.15) 1px, transparent 0),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+  background-color: #f0f2f5;
 }
 
-/* 全局链接样式 */
-a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-a:hover {
-    color: #0056b3;
+.io-black-mode .io-grey-mode .page-container .grid-bg {
+  background-image: 
+    linear-gradient(rgba(80, 80, 80, 0.15) 1px, transparent 0),
+    linear-gradient(90deg, rgba(80, 80, 80, 0.15) 1px, transparent 0);
+  background-color: #1a1a1a;
 }
 
-/* 其他细节调整 */
-/* 确保所有颜色搭配在不同模式下均有良好对比度 */
-/* 调整部分元素间距和对齐，提升整体美观度 */
+/* ================== 动画增强 ================== */
+/* 悬停动画 */
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+.hover-grow:hover {
+  transform: scale(1.03);
+}
+
+/* 按钮动画 */
+.btn {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0,0,0,0.1);
+}
+
+/* ================== 页脚优化 ================== */
+footer.main-footer {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  padding: 30px 0;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.footer-text {
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* ================== 响应式优化 ================== */
+@media (max-width: 768px) {
+  .sidebar-popup.sidebar-menu-inner > div > ul > li.sidebar-item > ul {
+    width: 160px;
+  }
+  
+  .header-big.css-color {
+    padding: 50px 0 70px;
+  }
+  
+  #search {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
