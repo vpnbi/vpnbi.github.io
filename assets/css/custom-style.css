@@ -139,7 +139,7 @@ html {
   border: 1px solid #e0e0e0;
 }
 
-#search-text:focus {
+#search-text:px:focus {
   box-shadow: 0 6px 15px rgba(32, 201, 151, 0.25);
   border-color: #20c997;
   transform: translateY(-2px);
