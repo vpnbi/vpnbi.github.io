@@ -1,7 +1,7 @@
-/* 全局字体与排版优化 */
+/* 全局变量定义 */
 :root {
-    --primary-color: #007bff;
-    --primary-hover: #0056b3;
+    --primary-color: #1a1a1a; /* 替换蓝色为黑色 */
+    --primary-hover: #0d0d0d;
     --text-color: #1a1a1a;
     --text-light: #4a4a4a;
     --bg-light: #f8f9fa;
@@ -12,12 +12,13 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 全局字体与排版 */
 body, html {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 1rem; /* 16px base */
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--text-color);
-    background: var(--bg-light);
+    background: linear-gradient(180deg, var(--bg-light), #e9ecef); /* 微妙渐变背景 */
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -29,6 +30,7 @@ body, html {
     --text-color: #e0e0e0;
     --text-light: #a0a0a0;
     --bg-light: var(--bg-dark);
+    background: linear-gradient(180deg, var(--bg-dark), #2a2a2a);
 }
 
 /* 左导航悬浮菜单优化 */
@@ -95,7 +97,7 @@ body, html {
 /* 顶部导航栏优化 */
 .big-header-banner .page-header {
     color: #ffffff;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent);
     box-shadow: none;
     padding: 1rem 2rem;
     transition: var(--transition);
@@ -133,7 +135,7 @@ body, html {
     transition: var(--transition);
 }
 .header-big #search-text:focus {
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
     background: #ffffff;
 }
 .io-black-mode .header-big #search-text {
@@ -167,7 +169,7 @@ body, html {
     transition: var(--transition);
 }
 .search-hot-text ul li:hover {
-    background: rgba(0, 123, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     color: var(--primary-color);
 }
 .io-black-mode .search-hot-text {
@@ -177,14 +179,14 @@ body, html {
     color: var(--text-light);
 }
 .io-black-mode .search-hot-text ul li:hover {
-    background: rgba(0, 123, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 .search-hot-text ul li.current {
-    background: rgba(0, 123, 255, 0.15);
+    background: rgba(0, 0, 0, 0.15);
     color: var(--primary-color);
 }
 .io-black-mode .search-hot-text ul li.current {
-    background: rgba(0, 123, 255, 0.3);
+    background: rgba(255, 255, 255, 0.3);
 }
 .search-hot-text ul li span {
     display: inline-block;
@@ -213,13 +215,32 @@ body, html {
     box-shadow: var(--shadow-sm);
 }
 
-/* 网格背景优化 */
-.io-grey-mode .page-container .grid-bg {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-    background-size: 1.5rem 1.5rem;
-    background-color: var(--bg-light);
+/* 底部文字板块优化 */
+.footer {
+    background: linear-gradient(180deg, var(--bg-light), #e9ecef);
+    padding: 2rem 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-light);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+.footer a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+.footer p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+.io-black-mode .footer {
+    background: linear-gradient(180deg, var(--bg-dark), #2a2a2a);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
 }
 
 /* 全局链接样式 */
@@ -247,5 +268,9 @@ a:focus {
     }
     .big-header-banner .page-header {
         padding: 0.75rem 1rem;
+    }
+    .footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.85rem;
     }
 }
