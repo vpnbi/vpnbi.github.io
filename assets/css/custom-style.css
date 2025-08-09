@@ -278,9 +278,9 @@ a:focus {
         padding: 0.75rem 1rem;
     }
     .main-footer {
-        padding: 1.5rem 1rem;
-        border-radius: 0.5rem 0.5rem 0 0;
-        gap: 1rem;
+        /* padding: 1.5rem 1rem; */
+        /* border-radius: 0.5rem 0.5rem 0 0; */
+        /* gap: 1rem; */
     }
     .io-black-mode .main-footer {
         background: linear-gradient(180deg, #2a2a2a, #222222) !important;
