@@ -217,32 +217,38 @@ body, html {
 
 /* 底部文字板块优化 */
 .main-footer {
-    /* background: linear-gradient(180deg, var(--bg-light), #e6e8eb); */
-    padding: 2rem 1.5rem;
+    background: linear-gradient(180deg, #e9ecef, #d8dbdf); /* Matches body's gradient end for seamless transition */
+    padding: 2.5rem 2rem;
     font-size: 0.875rem;
     color: var(--text-light);
     text-align: center;
-    /* border-top: 1px solid rgba(0, 0, 0, 0.08); */
+    border-radius: 0.75rem 0.75rem 0 0; /* Slight curve for visual appeal */
+    box-shadow: var(--shadow-sm); /* Adds depth */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
     transition: var(--transition);
 }
 
-.io-black-mode {
-    background: linear-gradient(180deg, var(--bg-dark), #272727) !important; /* Increased specificity */
-    /* border-top: 1px solid rgba(255, 255, 255, 0.08); */
+.io-black-mode .main-footer {
+    background: linear-gradient(180deg, #2a2a2a, #222222) !important; /* Matches body's dark mode gradient */   
     color: var(--text-light);
+    box-shadow: 0 -2px 8px rgba(255, 255, 255, 0.05); /* Subtle shadow for dark mode */
 }
+
 .io-black-mode .main-footer * {
     background: transparent !important; /* Ensure no child elements override in dark mode */
 }
+
 .io-black-mode .main-footer .footer-social a {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    transition: var(--transition);
 }
+
 .io-black-mode .main-footer .footer-social a:hover {
     background: var(--primary-color);
+    color: #ffffff;
 }
 
 /* 全局链接样式（保留原有样式） */
@@ -271,7 +277,12 @@ a:focus {
     .big-header-banner .page-header {
         padding: 0.75rem 1rem;
     }
+    .main-footer {
+        padding: 1.5rem 1rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        gap: 1rem;
+    }
     .io-black-mode .main-footer {
-        background: linear-gradient(180deg, var(--bg-dark), #272727) !important;
+        background: linear-gradient(180deg, #2a2a2a, #222222) !important;
     }
 }
