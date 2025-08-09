@@ -218,11 +218,11 @@ body, html {
 /* 底部文字板块优化 */
 .main-footer {
     background: linear-gradient(180deg, var(--bg-light), #e6e8eb);
-    padding: 2rem 1.5rem;
+    /* padding: 2rem 1.5rem; */
     font-size: 0.875rem;
     color: var(--text-light);
     text-align: center;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    /* border-top: 1px solid rgba(0, 0, 0, 0.08); */
     display: flex;
     flex-direction: column;
     align-items: center;
