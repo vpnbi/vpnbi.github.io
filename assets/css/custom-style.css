@@ -217,7 +217,7 @@ body, html {
 
 /* 底部文字板块优化 */
 .main-footer {
-    background: linear-gradient(180deg, var(--bg-light), #e9ecef);
+    /* background: linear-gradient(180deg, var(--bg-light), #e9ecef); */
     /* padding: 2rem 1.5rem; */
     font-size: 0.875rem;
     color: var(--text-light);
