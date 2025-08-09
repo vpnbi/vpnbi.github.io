@@ -217,8 +217,8 @@ body, html {
 
 /* 底部文字板块优化 */
 .main-footer {
-    background: linear-gradient(180deg, #e9ecef, #d8dbdf); /* Matches body's gradient end for seamless transition */
-    padding: 0 2rem 2.5rem 2rem;
+    /* background: linear-gradient(180deg, #e9ecef, #d8dbdf); Matches body's gradient end for seamless transition */
+    /* padding: 0 2rem 2.5rem 2rem; */
     font-size: 0.875rem;
     color: var(--text-light);
     text-align: center;
