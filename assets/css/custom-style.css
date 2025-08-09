@@ -218,11 +218,11 @@ body, html {
 /* 底部文字板块优化 */
 .main-footer {
     background: linear-gradient(180deg, #e9ecef, #d8dbdf); /* Matches body's gradient end for seamless transition */
-    padding: 2.5rem 2rem;
+    padding: 0 2rem 2.5rem 2rem;
     font-size: 0.875rem;
     color: var(--text-light);
     text-align: center;
-    border-radius: 0.75rem 0.75rem 0 0; /* Slight curve for visual appeal */
+    /* border-radius: 0.75rem 0.75rem 0 0; Slight curve for visual appeal */
     box-shadow: var(--shadow-sm); /* Adds depth */
     display: flex;
     flex-direction: column;
