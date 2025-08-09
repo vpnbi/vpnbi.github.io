@@ -216,7 +216,7 @@ body, html {
 }
 
 /* 底部文字板块优化 */
-.footer {
+.main-footer {
     background: linear-gradient(180deg, var(--bg-light), #e9ecef);
     padding: 2rem 1.5rem;
     font-size: 0.875rem;
@@ -229,16 +229,16 @@ body, html {
     gap: 1rem;
     transition: var(--transition);
 }
-.footer a {
+.main-footer a {
     color: var(--primary-color);
     text-decoration: none;
     position: relative;
     transition: var(--transition);
 }
-.footer a:hover {
+.main-footer a:hover {
     color: var(--primary-hover);
 }
-.footer a::after {
+.main-footer a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -248,26 +248,26 @@ body, html {
     background: var(--primary-hover);
     transition: width 0.3s ease;
 }
-.footer a:hover::after {
+.main-footer a:hover::after {
     width: 100%;
 }
-.footer p {
+.main-footer p {
     margin: 0;
     line-height: 1.6;
 }
-.footer .footer-links {
+.main-footer .footer-links {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
     margin: 0.5rem 0;
 }
-.footer .footer-social {
+.main-footer .footer-social {
     display: flex;
     gap: 0.75rem;
     justify-content: center;
 }
-.footer .footer-social a {
+.main-footer .footer-social a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -277,12 +277,12 @@ body, html {
     background: rgba(0, 0, 0, 0.1);
     transition: var(--transition);
 }
-.footer .footer-social a:hover {
+.main-footer .footer-social a:hover {
     background: var(--primary-color);
     color: #ffffff;
     transform: scale(1.1);
 }
-.footer .footer-social a:focus {
+.main-footer .footer-social a:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
